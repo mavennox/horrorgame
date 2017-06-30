@@ -1,0 +1,158 @@
+<!DOCTYPE html> 
+<html>
+    <header>
+         <script src = "https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    </header>
+    <body>
+        
+        <a-scene>
+            <a-camera>
+                <a-cursor></a-cursor>
+            </a-camera>
+            <a-text id = "text1" value="Something's happened.... Something here belongs in the bathroom" color = "black" position = "0 2 -5" visible = "true" >
+                <a-animation fill = "forwards" attribute="visible" begin = "click" to = "false"></a-animation>
+            </a-text>
+            <a-text id = "text2" value = "Something smells bad...Are you okay? Maybe you need something to drink?" color = "black" position = "0 2 -5" visible = "false">
+                <a-animation fill = "forwards" attribute="visible" begin = "click" to = "false"></a-animation>
+            </a-text> 
+            <a-text id = "text3" value = "All the food in the fridge has gone bad.. What's going on here? Is that the sound of the TV?" color = "black" position = "0 2 -5" visible = "false" >
+                <a-animation fill = "forwards" attribute="visible" begin = "click" to = "false"></a-animation>
+            </a-text>
+            <a-text id = "text4" value = "The TV was off.. Where's the sound coming from?" color = "black" position = "0 2 -5" visible = "false">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-text>
+           <a-box id = "yes" color="white" depth="0.2" height="1" width="1" position = "1 1 -5" visible = "false"></a-box>
+            <a-box id = "no" color="white" depth="0.2" height="1" width="1" position = "3.4 1 -5" visible = "false"></a-box>
+            <a-text id = "textreport" value = "POLICE REPORT
+            COD: UNKNOWN"  color = "white" position = "3.4 1 -5" visible = "false"></a-text>
+            <a-text id = "text5" value = "Investigate" color = "black" position = "1.5 1 -5" visible = "false">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-text>
+            
+            <a-text id = "text6" value = "Grab Weapon" color = "black" position = "4 1 -5" visible = "false">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-text>
+            <a-text id = "report2" value = "POLICE REPORT
+            HOME INTRUDER APPREHENDED" color = "white" position = "3.4 1 -5" visible = "false"></a-text>
+            
+            <a-asset>
+                <img id = "background" src = "background.jpg"/>
+                <img id = "bathroom-background" src = "bathroom.jpg"/>
+                <img id = "kitchen-background" src = "Kitchen.jpg"/>
+                <img id = "livingroom-background" src = "living room.jpg"/>
+                <img id = "attic-background" src = "attic.jpg"/>
+                <img id = "exterior-background" src = "exterior.jpg"/>
+                <img id = "theend-background" src = "theend.jpg"/>
+                <a-asset-item  id = "bottle-mtl" src = "bottle-test.mtl"></a-asset-item>
+                <a-asset-item id = "bottle-obj" src = "bottle-test.obj"></a-asset-item>
+                <a-asset-item id = "glass-mtl" src = "cup.mtl"></a-asset-item>
+                <a-asset-item id = "glass-obj" src = "cup.obj"></a-asset-item>
+                <a-asset-item id = "laptop-obj" src = "macbook-pro.obj"></a-asset-item>
+                <a-asset-item id = "laptop-mtl" src = "macbook-pro.mtl"></a-asset-item>
+                <a-asset-item id = "hand-obj" src = "hands.obj"></a-asset-item>
+                <a-asset-item id = "hand-mtl" src = "hands.mtl"></a-asset-item>
+                <a-asset-item id = "bear-obj" src = "bear.obj"></a-asset-item>
+                <a-asset-item id = "bear-mtl" src = "bear.mtl"></a-asset-item>
+                <a-asset-item id = "police-mtl" src = "police-car.mtl"></a-asset-item>
+                <a-asset-item id = "police-obj" src = "police-car.obj"></a-asset-item>
+                <audio id = "song" src = "song.mp3"></audio>
+                
+
+            </a-asset>
+            
+            <a-sky id="da-sky" material = "src: #background"></a-sky>
+            <a-entity id = "bottle" obj-model = "obj: #bottle-obj; mtl: #bottle-mtl " scale="0.2 0.2 0.2" position = "2 2 23" visible = "true">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-entity>
+            <a-entity id = "glass" obj-model = "obj: #glass-obj; mtl: #glass-mtl" scale="1 1 1" position = "-5 0.0221 15" visible = "false">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-entity>
+            <a-entity id = "laptop" obj-model = "obj: #laptop-obj; mtl: #laptop-mtl" scale="0.03 0.03 0.03" position = "-29 -22 29" visible = "false" begin="click">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-entity>
+            <a-entity id = "hand" scale="20 20 20" position= "12 12 2" obj-model = "obj: #hand-obj; mtl: #hand-obj" material = "src: #HAND_Low_C.jpg" visible = "false" begin="click">
+                <a-animation fill = "forwards" attribute="visible" begin="click" to="false"></a-animation>
+            </a-entity>
+            <a-entity id = "bear" obj-model = "obj: #bear-obj; mtl: #bear-mtl" scale = "0.4 0.4 0.4" position = "0 -1 -5" visible = "true"></a-entity>
+            <a-entity id = "police" scale = "3 3 3" position = "0 -1 5" obj-model = "obj:#police-obj; mtl: #police-mtl" visible = "false"></a-entity>
+            <a-sound src = "song"></a-sound>
+            <script>
+                document.getElementById('bottle').addEventListener('click', function(e){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #bathroom-background')
+                    document.getElementById('glass').setAttribute('visible', 'true')
+                    document.getElementById('text1').setAttribute('visible', 'false')
+                    document.getElementById('text2').setAttribute('visible','true')
+                })
+                document.getElementById('glass').addEventListener('click', function(e){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #kitchen-background')
+                    document.getElementById('laptop').setAttribute('visible', 'true')
+                    document.getElementById('glass').setAttribute('visible', 'false')
+                    document.getElementById('text2').setAttribute('visible', 'false')
+                    document.getElementById('text3').setAttribute('visible', 'true')
+                    
+                })
+                document.getElementById('laptop').addEventListener('click', function(){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #livingroom-background')
+                    document.getElementById('laptop').setAttribute('visible', 'false')
+                    document.getElementById('hand').setAttribute('visible', 'true')
+                    document.getElementById('text3').setAttribute('visible', 'false')
+                    document.getElementById('text4').setAttribute('visible', 'true')
+                    document.getElementById('yes').setAttribute('visible', 'true')
+                    document.getElementById('no').setAttribute('visible', 'true')
+                    document.getElementById('text5').setAttribute('visible', 'true')
+                    document.getElementById('text6').setAttribute('visible', 'true')
+                })
+                    
+                    document.getElementById('glass').addEventListener('click', function(e){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #kitchen-background')
+                    document.getElementById('laptop').setAttribute('visible', 'true')
+                    document.getElementById('glass').setAttribute('visible', 'false')
+                    document.getElementById('text2').setAttribute('visible', 'false')
+                    document.getElementById('text3').setAttribute('visible', 'true')
+
+                })
+                document.getElementById('yes').addEventListener('click', function(){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #attic-background')
+                    document.getElementById('yes').setAttribute('visible', 'false')
+                    document.getElementById('no').setAttribute('visible', 'false')
+                    document.getElementById('text4').setAttribute('visible', 'false')
+                    document.getElementById('text5').setAttribute('visible', 'false')
+                    document.getElementById('text6').setAttribute('visible', 'false')
+                    
+                })
+                
+                document.getElementById('no').addEventListener('click', function(){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #exterior-background')
+                    document.getElementById('no').setAttribute('visible', 'false')
+                    document.getElementById('yes').setAttribute('visible', 'false')
+                    document.getElementById('text4').setAttribute('visible', 'false')
+                    document.getElementById('text5').setAttribute('visible', 'false')
+                    document.getElementById('text6').setAttribute('visible', 'false')
+                    document.getElementById('report2').setAttribute('visible', 'true')
+                    
+                })
+                
+                 document.getElementById('hand').addEventListener('click', function(e){
+                    document.getElementById('da-sky').setAttribute('material', 'src: #exterior-background')
+                    document.getElementById('hand').setAttribute('visible', 'false')
+                    document.getElementById('text5').setAttribute('visible','false')
+                    document.getElementById('bear').setAttribute('visible', 'false')
+                    document.getElementById('textreport').setAttribute('visible','true')
+                    
+                     
+                 })
+                //  document.getElementById('hand').addEventListener('mouseover', function(e){
+                //     document.getElementById('da-sky').setAttribute('material', 'src: #exterior-background')
+                //     document.getElementById('hand').setAttribute('visible', 'false')
+                //     document.getElementById('text5').setAttribute('visible','false')
+                //     document.getElementById('bear').setAttribute('visible', 'false')
+                //     document.getElementById('police').setAttribute('visible', 'true')
+                    // document.getElementById('report').setAttribute('visible', 'true')
+                //  })
+                 
+                    
+            </script>
+            
+        </a-scene>
+    </body>
+</html>
